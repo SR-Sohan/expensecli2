@@ -46,48 +46,36 @@ class CliApp
 
         switch($chosseOption)
         {
-            case self::ADD_INCOME;
-    
+            case self::ADD_INCOME;    
             $income =  intval(readline("Enter your income: "));
             $category =  trim(readline("Enter your income category: "));
-            $this->finacemanager->addIncome($income,$category);
-      
+            $this->finacemanager->addIncome($income,$category);      
             break;
 
             case self::ADD_EXPENSE;
-            echo "\n\n=====================\n\n";
-            echo "add expense\n";
-            echo "\n\n=====================\n\n";
+            $expense =  intval(readline("Enter your expense: "));
+            $category =  trim(readline("Enter your expense category: "));
+            $this->finacemanager->addExpense($expense,$category);
             break;
 
-            case self::VIEW_INCOME;
-            
+            case self::VIEW_INCOME;            
             $this->finacemanager->showIncome();
-            
             break;
 
             case self::VIEW_EXPENSE;
-            echo "\n\n=====================\n\n";
-            echo "view expense\n";
-            echo "\n\n=====================\n\n";
+            $this->finacemanager->showExpense();
             break;
 
             case self::VIEW_SAVINGS;
-            echo "\n\n=====================\n\n";
-            echo "views savings\n";
-            echo "\n\n=====================\n\n";
+            $this->finacemanager->showSavings();
             break;
 
             case self::VIEW_CATEGORIES;
-
             $this->finacemanager->showCategories();
-
             break;
 
             case self::EXIT_APP;
-            echo "\n\n=====================\n\n";
-            echo "exit app\n";
-            echo "\n\n=====================\n\n";
+            return;
             break;
             
             default:
