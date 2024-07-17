@@ -1,8 +1,11 @@
 <?php 
 
+namespace App;
+
+
 class CliApp 
 {
-
+    public FinaceMnager $finacemanager;
     private const ADD_INCOME = 1;
     private const ADD_EXPENSE = 2;
     private const VIEW_INCOME = 3;
@@ -10,6 +13,11 @@ class CliApp
     private const VIEW_SAVINGS = 5;
     private const VIEW_CATEGORIES = 6;
     private const EXIT_APP = 7;
+
+    public function __construct()
+    {
+        $this->finacemanager = new FinaceMnager();
+    }
 
 
     private array $options = 
@@ -39,9 +47,11 @@ class CliApp
         switch($chosseOption)
         {
             case self::ADD_INCOME;
-            echo "\n\n=====================\n\n";
-            echo "income";
-            echo "\n\n=====================\n\n";
+    
+            $income =  intval(readline("Enter your income: "));
+            $category =  trim(readline("Enter your income category: "));
+            $this->finacemanager->addIncome($income,$category);
+      
             break;
 
             case self::ADD_EXPENSE;
@@ -51,9 +61,9 @@ class CliApp
             break;
 
             case self::VIEW_INCOME;
-            echo "\n\n=====================\n\n";
-            echo "view income\n";
-            echo "\n\n=====================\n\n";
+            
+            $this->finacemanager->showIncome();
+            
             break;
 
             case self::VIEW_EXPENSE;
@@ -69,9 +79,9 @@ class CliApp
             break;
 
             case self::VIEW_CATEGORIES;
-            echo "\n\n=====================\n\n";
-            echo "view categories\n";
-            echo "\n\n=====================\n\n";
+
+            $this->finacemanager->showCategories();
+
             break;
 
             case self::EXIT_APP;
